@@ -9,19 +9,25 @@ use Symfony\Component\HttpFoundation\Response;
 class CursoController extends ControllerBase
 {
 
-  // public function home($pagina)
-  // {
+  public function home(NodeInterface $node)
+  {
+    return [
+          "#theme" => "curso-plantilla",
+          "#etiqueta" => $node->label(),
+          "#tipo" => $node->bundle()
+        ];
+  }
+
+
+
+  // public function home(NodeInterface $node){
+
   //   return [
-  //     "#markup" => "La página es $pagina"
+  //     "#theme"=> "Tema: curso-plantilla",
+  //     "#etiqueta"=> "Etiqueta: Esta es la etiqueta",
+  //     "#tipo"=> "Tipo: Página básica"
   //   ];
   // }
-
-  public function home(NodeInterface $node){
-
-    return [
-      "#markup"=> "La etiqueda del nodo es ". $node->label()
-    ];
-  }
 
 }
 

@@ -30,3 +30,18 @@ function curso_module_node_delete(\Drupal\node\NodeInterface $node) {
   dump("Nodo deleteado con el hook hook_ENTITY_TYPE_delete()");
 }
 
+
+/**
+ * Implements hook_theme().
+ */
+function curso_module_theme($existing, $type, $theme, $path) {
+
+  return [
+    "curso-plantilla"=> [
+      "variables"=> [
+        "etiqueta" => NULL,
+        "tipo" => NULL,
+        ]
+      ]
+  ];
+}
