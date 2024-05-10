@@ -1,0 +1,8 @@
+
+
+curso_module.primera_principal:
+  path: "/curso/controller/pagina"
+  defaults:
+    _controller: "\\Drupal\\curso_module\\Controller\\CursoController::home"
+  requirements:
+    _permission: "access content"
