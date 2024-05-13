@@ -2,10 +2,31 @@
 
 namespace Drupal\curso_module\Form;
 
+use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\curso_module\services\Repetir;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class CursoForm extends FormBase {
+
+  private Repetir $repetir;
+  private EntityTypeManagerInterface $entityManager;
+
+  public function __construct(Repetir $repetir, EntityTypeManagerInterface $entityManager)
+  {
+    $this->repetir = $repetir;
+    $this->entityManager = $entityManager;
+  }
+
+  public static function create(ContainerInterface $container)
+  {
+    return new static(
+      $container->get("curso_module.repetir"),
+      $container->get("entity.type.manager")
+    );
+  }
 
 
    /**
@@ -100,6 +121,8 @@ class CursoForm extends FormBase {
 
     $values = $form_state->getValues();
     $phone = $form_state->getValue("phone");
+
+
 
     dump($values,"values");
 
