@@ -14,3 +14,11 @@ curso_module.curso_form:
     _form: "\\Drupal\\curso_module\\Form\\CursoForm"
   requirements:
     _permission: "access content"
+
+
+curso_module.ruta_con_formulario:
+  path: "/curso/controller/form"
+  defaults:
+    _controller: "\\Drupal\\curso_module\\Controller\\CursoController::formController"
+  requirements:
+    _permission: "access content"

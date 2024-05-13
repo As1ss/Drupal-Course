@@ -34,6 +34,41 @@ class CursoForm extends FormBase {
    *   The form structure.
    */
   public function buildForm(array $form, FormStateInterface $form_state){
+
+    $form["checkbox"] = [
+      '#type' => 'checkbox',
+      '#title' => 'Nuestro Checkbox',
+      "#required" => TRUE,
+    ];
+
+
+    $form["title"] = [
+      '#type' => 'textfield',
+      '#title' => "Título",
+      '#default_value' => "Valor por defecto",
+      '#size' => 60,
+      '#maxlength' => 128,
+      '#required' => TRUE,
+      "#attributes" => [
+        "class" => [
+          "Clase_1",
+          "Clase_2"
+        ]
+        ],
+    ];
+
+    $form['phone'] = [
+      '#type' => 'tel',
+      '#title' => "Teléfono",
+      "#required" => TRUE,
+  ];
+
+  $form['actions']['submit'] = [
+    '#type' => 'submit',
+    '#value' => "Enviar",
+  ];
+
+
     return $form;
   }
 
@@ -47,6 +82,10 @@ class CursoForm extends FormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state){
 
+    if(strlen($form_state->getValue("phone"))<4){
+      $form_state->setErrorByName("phone","El campo tiene que contener mínimo 4 caracteres");
+    }
+
   }
 
   /**
@@ -58,6 +97,21 @@ class CursoForm extends FormBase {
    *   The current state of the form.
    */
   public function submitForm(array &$form, FormStateInterface $form_state){
+
+    $values = $form_state->getValues();
+    $phone = $form_state->getValue("phone");
+
+    dump($values,"values");
+
+    if (isset($values["title"])) {
+      $this->messenger()->addStatus("El campo title contenia el texto: " . $values["title"]);
+    }
+    if (isset($values["phone"])) {
+      $this->messenger()->addStatus("El campo phone contenia el numero: " . $phone);
+    }
+    if (isset($values["checkbox"])) {
+      $this->messenger()->addStatus("El campo checkbox contenia el texto: " . $values["checkbox"]);
+    }
 
   }
 

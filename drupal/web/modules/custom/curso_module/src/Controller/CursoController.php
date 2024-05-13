@@ -2,12 +2,12 @@
 
 namespace Drupal\curso_module\Controller;
 
-use Drupal\Component\DependencyInjection\ContainerInterface;
+
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\curso_module\services\Repetir;
 use Drupal\node\NodeInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface as DependencyInjectionContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class CursoController extends ControllerBase
@@ -19,7 +19,7 @@ class CursoController extends ControllerBase
     $this->repetir = $repetir;
   }
 
-  public static function create(DependencyInjectionContainerInterface $container)
+  public static function create(ContainerInterface $container)
   {
     return new static (
       $container->get("curso_module.repetir")
@@ -42,6 +42,21 @@ class CursoController extends ControllerBase
           "#tipo" => $resultado,
         ];
   }
+public function formController(){
+
+  $form = $this->formBuilder()->getForm("\Drupal\curso_module\Form\CursoForm");
+  $markup = ["#markup" => "Esta es la página del formulario"];
+
+  $build = [
+    $markup,
+    $form,
+  ];
+
+
+
+  return $build;
+
+}
 
 
 
