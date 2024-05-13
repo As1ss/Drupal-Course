@@ -6,3 +6,11 @@ curso_module.primera_principal:
     _controller: "\\Drupal\\curso_module\\Controller\\CursoController::home"
   requirements:
     _permission: "access content"
+
+
+curso_module.curso_form:
+  path: "/curso/form/curso"
+  defaults:
+    _form: "\\Drupal\\curso_module\\Form\\CursoForm"
+  requirements:
+    _permission: "access content"
