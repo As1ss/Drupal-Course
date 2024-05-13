@@ -37,7 +37,7 @@ function curso_module_node_delete(\Drupal\node\NodeInterface $node) {
 function curso_module_theme($existing, $type, $theme, $path) {
 
   return [
-    "curso-plantilla"=> [
+    "curso_plantilla"=> [
       "variables"=> [
         "etiqueta" => NULL,
         "tipo" => NULL,
