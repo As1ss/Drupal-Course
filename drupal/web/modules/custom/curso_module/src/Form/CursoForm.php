@@ -24,7 +24,7 @@ class CursoForm extends FormBase {
   {
     return new static(
       $container->get("curso_module.repetir"),
-      $container->get("entity.type.manager")
+      $container->get("entity_type.manager")
     );
   }
 
@@ -77,6 +77,22 @@ class CursoForm extends FormBase {
         ]
         ],
     ];
+
+    $form['referencia'] = [
+      '#type' => 'entity_autocomplete',
+      '#target_type' => 'node',
+      '#tags' => TRUE,
+      // '#default_value' => $node,
+      // '#selection_handler' => 'default',
+      // '#selection_settings' => [
+      //   'target_bundles' => ['article', 'page'],
+      //  ],
+      // '#autocreate' => [
+      //   'bundle' => 'article',
+      //   'uid' => <a valid user ID>,
+      //  ],
+     ];
+
 
     $form['phone'] = [
       '#type' => 'tel',

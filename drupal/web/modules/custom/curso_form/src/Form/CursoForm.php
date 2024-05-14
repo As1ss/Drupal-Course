@@ -51,16 +51,46 @@ class CursoForm extends FormBase {
    *   The form structure.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $node = $this->entityTypeManager->getStorage("node")->load(14);
+
+
+    $form["checked"] = [
+      "#type" => "checkbox",
+      "#title" => "Check",
+      "#description" => "Si lo marcas, veras el campo title"
+    ];
+
 
     $form['title'] = [
       '#type' => 'textfield',
       '#title' => 'Titulo',
+      "#access" => $this->currentUser()->isAuthenticated(),
+      "#states" => [
+        "visible" =>[
+          ':input[name="checked"]' =>[
+            "checked"=> TRUE
+          ]
+        ]
+      ]
     ];
 
     $form['label'] = [
       '#type' => 'textfield',
       '#title' => 'Etiqueta',
     ];
+    $form['referencia'] = [
+      '#type' => 'entity_autocomplete',
+      '#target_type' => 'taxonomy_term',
+      '#tags' => TRUE,
+      // '#default_value' => [$node],
+      // '#selection_handler' => 'default',
+      '#selection_settings' => [
+        'target_bundles' => ["tags"],
+       ],
+      '#autocreate' => [
+        'bundle' => 'tags',
+       ],
+     ];
 
     $form['actions']['submit'] = [
       '#type' => 'submit',
@@ -90,6 +120,15 @@ class CursoForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
+      dump($form_state->getValue("referencia"),"referencia");
+
+      $terms = $form_state->getValue("referencia");
+
+      foreach($terms as $item){
+        if(array_key_exists("entity",$item)){
+          $item["entity"]->save();
+        }
+      }
   }
 
 }
