@@ -22,3 +22,10 @@ curso_module.ruta_con_formulario:
     _controller: "\\Drupal\\curso_module\\Controller\\CursoController::formController"
   requirements:
     _permission: "access content"
+
+curso_module.ruta_configuracion:
+  path: "/curso/controller/config"
+  defaults:
+    _controller: "\\Drupal\\curso_module\\Controller\\CursoController::configController"
+  requirements:
+    _permission: "access content"

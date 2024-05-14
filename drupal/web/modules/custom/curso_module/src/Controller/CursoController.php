@@ -9,6 +9,7 @@ use Drupal\curso_module\services\Repetir;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Drupal\Core\Config\ConfigFactoryInterface;
 
 class CursoController extends ControllerBase
 {
@@ -56,6 +57,25 @@ public function formController(){
 
   return $build;
 
+}
+
+public function configController(){
+
+
+  $config  = $this->config("system.site");
+
+
+  dump($config,"config");
+  dump($config->get("name"));
+
+  /** @var ConfigFactoryInterface $configFactory */
+  $configFactory = \Drupal::service("config.factory");
+
+  $config = $configFactory->get("system.site");
+
+  dump($config, "config factory");
+
+  return ["#markup"=> "Ruta de configuracion"];
 }
 
 
