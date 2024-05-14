@@ -57,7 +57,7 @@ class CursoForm extends FormBase {
     $form["checked"] = [
       "#type" => "checkbox",
       "#title" => "Check",
-      "#description" => "Si lo marcas, veras el campo title"
+      "#description" => "Si lo marcas, veras el campo title y la etiqueta"
     ];
 
 
@@ -77,6 +77,13 @@ class CursoForm extends FormBase {
     $form['label'] = [
       '#type' => 'textfield',
       '#title' => 'Etiqueta',
+      "#states" => [
+        "visible" =>[
+          ':input[name="checked"]' =>[
+            "checked"=> TRUE
+          ]
+        ]
+      ]
     ];
     $form['referencia'] = [
       '#type' => 'entity_autocomplete',
