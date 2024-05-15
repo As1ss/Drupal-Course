@@ -19,8 +19,8 @@ function curso_module_help($route_name, \Drupal\Core\Routing\RouteMatchInterface
 function curso_module_node_insert(\Drupal\node\NodeInterface $node)
 {
 
-  dump("Nodo insertado con el hook hook_ENTITY_TYPE_insert()");
-  dump("Id del nodo " . $node->id());
+  dmp("Nodo insertado con el hook hook_ENTITY_TYPE_insert()");
+  dmp("Id del nodo " . $node->id());
 }
 
 function curso_module_node_update(\Drupal\node\NodeInterface $node)
