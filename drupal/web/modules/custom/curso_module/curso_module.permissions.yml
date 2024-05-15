@@ -1,0 +1,4 @@
+curso permiso limitado:
+  title: 'Permiso limitado de acceso'
+  description: 'Permite el acceso limitado a los recursos del módulo.'
+  restrict access: true

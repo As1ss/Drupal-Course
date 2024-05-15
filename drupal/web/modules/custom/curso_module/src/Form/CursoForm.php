@@ -65,7 +65,7 @@ class CursoForm extends FormBase {
 
     $form["title"] = [
       '#type' => 'textfield',
-      '#title' => "Título",
+      '#title' => $this->t("Title"),
       '#default_value' => "Valor por defecto",
       '#size' => 60,
       '#maxlength' => 128,

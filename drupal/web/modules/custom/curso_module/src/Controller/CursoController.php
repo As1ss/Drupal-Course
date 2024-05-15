@@ -4,30 +4,35 @@ namespace Drupal\curso_module\Controller;
 
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\curso_module\services\Repetir;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 
 class CursoController extends ControllerBase
 {
   private Repetir $repetir;
 
+  /**
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  private AccountProxyInterface $accountProxy;
 
-  public function __construct(Repetir $repetir, ConfigFactoryInterface $configFactory)
+  public function __construct(Repetir $repetir, ConfigFactoryInterface $configFactory, AccountProxyInterface $accountProxy)
   {
     $this->repetir = $repetir;
     $this->configFactory = $configFactory;
+    $this->accountProxy = $accountProxy;
   }
 
   public static function create(ContainerInterface $container)
   {
     return new static (
       $container->get("curso_module.repetir"),
-      $container->get("config.factory")
-      // $container->get("core.entity_type.manager")
+      $container->get("config.factory"),
+      $container->get("current_user")
+
     );
   }
 
@@ -46,21 +51,23 @@ class CursoController extends ControllerBase
           "#tipo" => $resultado,
         ];
   }
-public function formController(){
-
+public function formController() {
+  if (!$this->accountProxy->hasPermission("curso permiso limitado")) {
+    return ["#markup" => "No tienes permisos para acceder al form"];
+  }
   $form = $this->formBuilder()->getForm("\Drupal\curso_module\Form\CursoForm");
-  $markup = ["#markup" => "Esta es la página del formulario"];
+
+  $texto = "Rodrigo";
+  $markup = ["#markup" => $this->t("This is the page of the @form", ["@form" => $texto]),];
 
   $build = [
     $markup,
     $form,
   ];
 
-
-
   return $build;
-
 }
+
 
 public function configController(){
 

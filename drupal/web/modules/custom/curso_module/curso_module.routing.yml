@@ -13,7 +13,7 @@ curso_module.curso_form:
   defaults:
     _form: "\\Drupal\\curso_module\\Form\\CursoForm"
   requirements:
-    _permission: "access content"
+    _permission: "curso permiso limitado"
 
 
 curso_module.ruta_con_formulario:
