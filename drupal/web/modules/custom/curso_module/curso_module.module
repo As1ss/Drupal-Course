@@ -4,6 +4,8 @@
  * Implements hook_help().
  */
 
+
+use Drupal\Core\Controller\ControllerBase;
 function curso_module_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match)
 {
   switch ($route_name) {
@@ -26,12 +28,12 @@ function curso_module_node_insert(\Drupal\node\NodeInterface $node)
 function curso_module_node_update(\Drupal\node\NodeInterface $node)
 {
 
-  dump("Nodo updateado con el hook hook_ENTITY_TYPE_update()");
+  dpm("Nodo updateado con el hook hook_ENTITY_TYPE_update()");
 }
 function curso_module_node_delete(\Drupal\node\NodeInterface $node)
 {
 
-  dump("Nodo deleteado con el hook hook_ENTITY_TYPE_delete()");
+  dpm("Nodo deleteado con el hook hook_ENTITY_TYPE_delete()");
 }
 
 

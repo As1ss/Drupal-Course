@@ -59,3 +59,10 @@ curso_module.ruta_entityDelete:
     _controller: "\\Drupal\\curso_module\\Controller\\EntityController::entityDelete"
   requirements:
     _permission: "access content"
+
+curso_module.ruta_entityQuery:
+  path: "/curso/controller/entity/query"
+  defaults:
+    _controller: "\\Drupal\\curso_module\\Controller\\EntityController::entityQuery"
+  requirements:
+    _permission: "access content"

@@ -74,7 +74,6 @@ class EntityController extends ControllerBase{
 
     return ["#markup"=>"Ruta de creación de entidades"];
   }
-
   public function entityEdit () {
 
    /* $values = [
@@ -123,6 +122,35 @@ class EntityController extends ControllerBase{
     $node->delete();
     return ["#markup" => "Ruta de eliminación de entidades"];
 
+  }
+
+  public function entityQuery() {
+
+    $query = $this->entityTypeManager->getStorage("node")->getQuery("OR"); // Con OR se pueden hacer consultas con condiciones de tipo OR
+
+   /* $query->condition("type", "page","<>");
+    $query->condition("uid",1,);
+    $query->condition("status",1);*/
+    $query->notExists("field_texto");
+    //$query->sort("title","DESC");*/
+
+    $conditionOr = $query->orConditionGroup();
+    $conditionOr->condition("type","article");
+    $conditionOr->condition("uid",1);
+    $query->range(0, 3);
+    $query->pager(2);
+    $query->condition($conditionOr);
+    $query->accessCheck(FALSE);
+    $result = $query->execute();
+
+
+
+
+    $nodes = $this->entityTypeManager->getStorage("node")->loadMultiple($result);
+
+    dpm($nodes, "nodes");
+
+    return ["#markup" => "Ruta de consulta de entidades"];
   }
 
 }
