@@ -64,7 +64,7 @@ class EntityController extends ControllerBase{
 
     $values = [
       "name"=> "Taxonomia de prueba",
-      "vid" => "tags"
+      "vid" => "tags",
     ];
     $taxonomy = $this->entityTypeManager->getStorage("taxonomy_term")->create($values);
     $taxonomy->save();
@@ -73,6 +73,48 @@ class EntityController extends ControllerBase{
 
 
     return ["#markup"=>"Ruta de creación de entidades"];
+  }
+
+  public function entityEdit () {
+
+   /* $values = [
+      "title"=> "Articulo de prueba",
+      "type" => "article"
+    ];
+
+    $node = $this->entityTypeManager->getStorage("node")->create($values);
+    $node->save();
+
+    dpm($node, "Nodo creado (Articulo)");
+
+    $node = $this->entityTypeManager->getStorage("node")->load(20);
+
+
+
+    $campo = $node->get("body")->value;
+    $node->set("body", "En la encrucijada entre la tecnología y la medicina, la inteligencia artificial (IA) está emergiendo como una fuerza transformadora que está redefiniendo la forma en que diagnosticamos, tratamos y gestionamos las enfermedades. Desde algoritmos de aprendizaje profundo hasta sistemas de diagnóstico asistido por IA, las innovaciones en este campo están abriendo nuevas fronteras y desafiando las normas establecidas.");
+    $node->save();
+
+   $campo = $node->set("field_texto","Texto de prueba en field_texto");
+    $node->save();
+    dpm($campo, "Campo");/
+
+    $taxonomies = $this->entityTypeManager->getStorage("taxonomy_term")->loadMultiple();
+
+   dpm($taxonomies, "Taxonomias");
+
+   $node->get("field_tags")->appendItem($taxonomies[1]);
+      $node->get("field_tags")->appendItem($taxonomies[2]);
+      $node->save();
+
+    //Eliminar un item del nodo
+    $node->get("field_tags")->removeItem(0);
+   */
+
+
+
+
+    return ["#markup" =>  "Ruta de edición de entidades"];
   }
 
 }

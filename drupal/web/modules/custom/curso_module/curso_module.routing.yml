@@ -45,3 +45,10 @@ curso_module.ruta_entityCreate:
     _controller: "\\Drupal\\curso_module\\Controller\\EntityController::entityCreate"
   requirements:
     _permission: "access content"
+
+curso_module.ruta_entityEdit:
+  path: "/curso/controller/entity/edit"
+  defaults:
+    _controller: "\\Drupal\\curso_module\\Controller\\EntityController::entityEdit"
+  requirements:
+    _permission: "access content"
