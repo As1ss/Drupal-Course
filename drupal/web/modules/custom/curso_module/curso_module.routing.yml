@@ -30,9 +30,18 @@ curso_module.ruta_configuracion:
   requirements:
     _permission: "access content"
 
+
+
 curso_module.ruta_entityLoad:
   path: "/curso/controller/entity/load"
   defaults:
     _controller: "\\Drupal\\curso_module\\Controller\\EntityController::entityLoad"
+  requirements:
+    _permission: "access content"
+
+curso_module.ruta_entityCreate:
+  path: "/curso/controller/entity/create"
+  defaults:
+    _controller: "\\Drupal\\curso_module\\Controller\\EntityController::entityCreate"
   requirements:
     _permission: "access content"

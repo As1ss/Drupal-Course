@@ -26,6 +26,7 @@ class EntityController extends ControllerBase{
   public function entityLoad(){
 
    $user =  $this->entityTypeManager()->getStorage("user")->load(1);
+   $users = $this->entityTypeManager()->getStorage("user")->loadMultiple([1, 2, 3]);
 
    $node = $this->entityTypeManager()->getStorage("node")->load(14);
 
@@ -33,10 +34,45 @@ class EntityController extends ControllerBase{
 
 
    dpm($user, "Usuario");
+   dpm($users, "Usuarios");
    dpm($node, "Nodo");
-    dpm($nodes, "Nodos");
+   dpm($nodes, "Nodos");
 
-    return ["#markup"=>"Página de entidades"];
+    return ["#markup"=>"Ruta de carga de entidades"];
+  }
+  public function entityCreate() {
+
+  /*  $values = [
+      "title"=> "Nodo de prueba",
+      "type" => "page"
+    ];
+
+    $node = $this->entityTypeManager->getStorage("node")->create($values);
+    $node->save();
+    dpm($node, "Nodo creado");*/
+
+   /* $values = [
+      "name"=> "Usuario de prueba",
+      "mail" => "usuario@prueba.com ",
+      "pass" => "12345",
+      "status" => 1
+    ];
+
+    $user = $this->entityTypeManager->getStorage("user")->create($values);
+    $user->save();
+    dpm($user, "Usuario creado");*/
+
+    $values = [
+      "name"=> "Taxonomia de prueba",
+      "vid" => "tags"
+    ];
+    $taxonomy = $this->entityTypeManager->getStorage("taxonomy_term")->create($values);
+    $taxonomy->save();
+    dpm($taxonomy, "Taxonomia creada");
+
+
+
+    return ["#markup"=>"Ruta de creación de entidades"];
   }
 
 }
