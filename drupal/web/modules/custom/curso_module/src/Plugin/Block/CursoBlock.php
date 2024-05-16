@@ -6,7 +6,10 @@ namespace Drupal\curso_module\Plugin\Block;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\curso_module\services\Repetir;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * @Block(
@@ -17,7 +20,28 @@ use Drupal\Core\Session\AccountInterface;
  *
  *
  */
-class CursoBlock extends BlockBase {
+class CursoBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * @var \Drupal\curso_module\services\Repetir
+   */
+  private Repetir $repetir;
+
+  public function __construct(array $configuration, $plugin_id, $plugin_definition,Repetir $repetir) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->repetir = $repetir;
+  }
+
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get("curso_module.repetir")
+    );
+  }
+
+
 
   public function build(): array {
 
@@ -74,5 +98,7 @@ class CursoBlock extends BlockBase {
 
    parent::blockSubmit($form,$form_state);
   }
+
+
 
 }
