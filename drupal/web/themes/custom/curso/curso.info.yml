@@ -1,0 +1,6 @@
+name: Curso
+type: theme
+description: Tema personalizado apra el curso de drupal 10
+version: 1.0.0
+core_version_requirement: ^9 || ^10
+base theme: olivero
