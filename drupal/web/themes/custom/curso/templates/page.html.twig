@@ -99,6 +99,11 @@
             <div>
               <p>Hola desde page.html.twig</p>
             </div>
+            {{ %  if page.curso % }}
+            <div class="region-curso">
+            {{ page.curso }}
+            </div>
+            {{ %  endif % }}
             {{ page.breadcrumb }}
             {% if page.sidebar %}
               <div class="sidebar-grid grid-full">
