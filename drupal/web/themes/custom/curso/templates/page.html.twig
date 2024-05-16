@@ -96,14 +96,15 @@
           {{ page.hero }}
           <div class="main-content__container container">
             {{ page.highlighted }}
+            <!--  COMENTARIO DE PRUEBA -->
             <div>
               <p>Hola desde page.html.twig</p>
             </div>
-            {{ %  if page.curso % }}
+            {%  if page.curso %}
             <div class="region-curso">
             {{ page.curso }}
             </div>
-            {{ %  endif % }}
+            {%  endif %}
             {{ page.breadcrumb }}
             {% if page.sidebar %}
               <div class="sidebar-grid grid-full">
