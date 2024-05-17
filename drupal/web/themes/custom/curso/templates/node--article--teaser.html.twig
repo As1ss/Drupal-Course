@@ -80,6 +80,7 @@
   view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 ]
 %}
+{{ attach_library('curso/article') }}
 <article{{ attributes.addClass(classes) }}>
   <div>Esta es la plantilla teaser</div>
   <header class="{{ layout }}">
