@@ -49,6 +49,8 @@
 <div id="page-wrapper" class="page-wrapper">
   <div id="page">
 
+    <div>El valor del formulario del check: {{ curso_check }}</div>
+    <div>El valor del formulario del texto: {{ curso_texto }} </div>
     {% if page.header or page.primary_menu or page.secondary_menu %}
       <header id="header" class="site-header" data-drupal-selector="site-header" role="banner">
 
@@ -110,6 +112,7 @@
               <div class="sidebar-grid grid-full">
                 <main role="main" class="site-main">
                   {{ page.content_above }}
+
                   {{ page.content }}
                 </main>
 
