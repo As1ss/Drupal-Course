@@ -1,0 +1,7 @@
+services:
+  curso_module.repetir:
+    class: "Drupal\\curso_module\\Services\\Repetir"
+    arguments: ["@messenger","@entity_type.manager"]
+parameters:
+  twig.config:
+    debug: true

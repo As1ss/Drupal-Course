@@ -1,0 +1,6 @@
+curso_module.curso_form:
+  title: "Formulario"
+  description: "Formulario de prueba del curso"
+  route_name: curso_module.curso_form
+  menu_name: main
+  weight: 100
