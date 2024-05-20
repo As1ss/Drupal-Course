@@ -1,0 +1,6 @@
+curso_extras.controller:
+  path: "/curso_extras/controller"
+  defaults:
+    _controller: "\\Drupal\\curso_extras\\Controller\\CursoController::hello"
+  requirements:
+    _permission: "access content"

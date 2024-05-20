@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function curso_extras_theme($existing, $type, $theme, $path) {
+
+  return [
+    "curso_controller"=>[
+      "variables"=>[
+        "text" => NULL,
+        "usuario"=>NULL
+      ]
+    ]
+  ];
+
+}
