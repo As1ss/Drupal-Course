@@ -11,7 +11,23 @@ function curso_extras_theme($existing, $type, $theme, $path) {
         "text" => NULL,
         "usuario"=>NULL
       ]
-    ]
+    ],
+    "curso_user_login"=>[
+      "render element"=>"form",
+    ],
   ];
 
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function curso_extras_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  switch ($form_id){
+    case "user_login_form":
+      $form["#theme"] = "curso_user_login";
+      dpm($form, "user-login-form");
+      break;
+  }
 }
